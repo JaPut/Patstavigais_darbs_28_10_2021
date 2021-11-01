@@ -10,12 +10,13 @@ def university(request):
         math = request.POST['math']
         lat = request.POST['lat']
         eng = request.POST['eng']
+    # if int(math) >39:
         total = int(math) + int(lat) + int(eng)
 
-        if total > 39:
-            return HttpResponse(f'Dear {full_name} velcome to the party! Your total score is: {total}')
+        if int(math) > 39 and int(lat) > 39 and int(eng) > 39:
+            return HttpResponse(f'Dear {full_name} velcome to university! Your total score is: {total}')
         else:
-            return HttpResponse(f'Dear loser {full_name} see u later, may be...')
+            return HttpResponse(f'Dear loser {full_name} university is not for you, see u later, may be...')
 
     return render(
         request,
